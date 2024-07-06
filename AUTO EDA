@@ -1,0 +1,35 @@
+import pandas as pd
+import pandas as np
+import matplotlib.pyplot as plt
+dataset = pd.read_csv(r"C:\Users\Ambeet Mohapatra\Downloads\Dataset .csv")
+dataset.head()
+dataset.columns
+dataset.isnull().sum()
+dataset.duplicated().sum()
+plt.figure(figsize=(8, 6))
+plt.title('Distribution of Regions')
+date_qty = dataset.groupby('Locality')['Currency'].sum()
+plt.figure(figsize=(10, 6))
+dataset.describe()
+dataset.isna().sum()
+dataset = dataset.drop([113, 114, 115, 116, 117]).reset_index(drop=True)
+dataset['City'].unique()
+dataset_consumption = dataset[dataset['City'] == 'London']
+dataset_ending = dataset[dataset['City'] == 'Noida']
+dataset_export = dataset[dataset['City'] == 'Goa']
+dataset_import = dataset[dataset['City'] == 'Vizag']
+dataset_production = dataset[dataset['City'] == 'Lucknow']
+display(dataset_consumption.head(10), dataset_ending.head(10), dataset_export.head(10), dataset_import.head(10), dataset_production.head(10))
+import matplotlib.pyplot as plt
+import pandas as pd
+aggregated_data = top_20_producers.groupby(['City', 'Cuisines']).size().reset_index(name='Count')
+cities = aggregated_data['City'].unique()
+num_cities = len(cities)
+plt.figure(figsize=(20, 10))
+for i, city in enumerate(cities):
+for i, city in enumerate(cities):
+    city_data = aggregated_data[aggregated_data['City'] == city]
+plt.subplot(1, num_cities, i + 1)
+plt.pie(city_data['Count'], labels=city_data['Cuisines'], autopct='%1.1f%%', colors=plt.cm.viridis.colors)
+plt.title(f'Cuisines Distribution in {city}')
+plt.show()
